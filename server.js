@@ -3,6 +3,7 @@ const fs = require("fs");
 const url = require("url");
 const querystring = require("querystring");
 const figlet = require('figlet')
+const PORT = 8000
 
 const server = http.createServer((req, res) => {
   const page = url.parse(req.url).pathname;
@@ -87,4 +88,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(8000);
+server.listen(process.env.PORT || PORT, ()=>{
+  console.log(`The server is now running on port ${PORT}: Betta go catch it!`)
+});
